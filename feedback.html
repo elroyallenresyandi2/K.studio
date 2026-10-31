@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback — Kotak Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+<nav>
+  <a class="logo" href="index.html" style="text-decoration:none;color:inherit">Kotak <b>Studio</b></a>
+  <a class="btn" href="index.html" style="text-decoration:none">← Kembali ke Studio</a>
+</nav>
+
+<main class="pg on fb">
+  <h2>Beri Masukan</h2>
+  <p class="sub">Ceritakan pengalamanmu — saran, bug, atau fitur yang kamu mau.</p>
+
+  <form id="fbForm" novalidate>
+    <div class="lab">Penilaian</div>
+    <div class="stars" id="stars"></div>
+
+    <div class="lab">Jenis masukan</div>
+    <div class="chips" id="kinds"></div>
+
+    <div class="lab" style="margin-top:10px">Pesan</div>
+    <textarea id="msg" rows="5" maxlength="1000" placeholder="Tulis di sini…"></textarea>
+    <div class="cnt"><span id="cnt">0</span>/1000</div>
+
+    <div class="two">
+      <div><div class="lab">Nama (opsional)</div><input type="text" id="nm" maxlength="60"></div>
+      <div><div class="lab">Kontak (opsional)</div><input type="text" id="ct" maxlength="80" placeholder="Email atau Instagram"></div>
+    </div>
+
+    <input type="text" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div id="fbMsg" class="note" hidden></div>
+    <button class="btn pri big" id="send" type="submit">Kirim Feedback</button>
+  </form>
+
+  <div id="done" hidden>
+    <div class="emo-big">💌</div>
+    <h2>Terima kasih!</h2>
+    <p class="sub">Masukanmu sudah terkirim dan sangat membantu.</p>
+    <a class="btn pri" href="index.html" style="text-decoration:none">Kembali ke Studio</a>
+  </div>
+</main>
+
+<script src="feedback.js"></script>
+</body>
+</html>
