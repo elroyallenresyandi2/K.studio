@@ -1,0 +1,38 @@
+.logo small{font:500 12px 'Space Grotesk',sans-serif;color:var(--t2);margin-left:6px}
+.adm{max-width:900px}
+.panel{background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:22px;margin-bottom:20px;display:flex;flex-direction:column;gap:10px}
+.panel.narrow{max-width:360px;margin:40px auto}
+.panel h2{font-size:22px;margin:0}
+.panel .sub{margin:0}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+input[type=password],input[type=file]{width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg)}
+input[type=color]{width:56px;height:36px;border:1px solid var(--bd);border-radius:8px;background:none;padding:2px}
+.big{padding:12px;font-size:15px;justify-content:center}
+.note{font-size:13px;padding:10px 12px;border-radius:10px;background:var(--s2)}
+.note.err{color:#ff8c8c}
+.two{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:end}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.cols{display:flex;gap:14px}
+.chk{font-size:13px;display:flex;gap:8px;align-items:flex-start}
+#pv{max-width:100%;max-height:480px;align-self:center;border-radius:8px;border:1px solid var(--bd);
+  background:repeating-conic-gradient(#8884 0 25%,#0000 0 50%) 0 0/16px 16px}
+h3{margin:6px 0 12px;font-size:16px}
+.flist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.fcard{background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:10px;display:flex;flex-direction:column;gap:6px;font-size:12px}
+.fcard img{width:100%;height:150px;object-fit:contain;border-radius:6px;background:repeating-conic-gradient(#8884 0 25%,#0000 0 50%) 0 0/12px 12px}
+.fcard b{font-size:13px;word-break:break-word}
+.fcard span{color:var(--t2)}
+.fb-item{background:var(--s);border:1px solid var(--bd);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;display:flex;flex-direction:column;gap:6px}
+.fb-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--t2)}
+.fb-stars{color:var(--a);letter-spacing:2px;font-size:15px}
+.fb-msg{white-space:pre-wrap;word-break:break-word;font-size:14px}
+.fb-item .btn{align-self:flex-end;padding:5px 12px;font-size:12px}
+.empty{text-align:center;color:var(--t2);padding:30px}
+.panel select,#coll{width:100%;padding:9px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:inherit}
+textarea{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--bg);color:inherit;font:12px/1.5 ui-monospace,Consolas,monospace;resize:vertical}
+code{background:var(--s2);padding:1px 6px;border-radius:5px;font-size:12px}
+.flist{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.fcard input{width:100%;padding:6px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:inherit;font-size:12px}
+.fcard .row2{display:flex;gap:6px}.fcard .row2 .btn{flex:1;padding:6px 8px;font-size:12px;justify-content:center}
+.two2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.two2{grid-template-columns:1fr}}
