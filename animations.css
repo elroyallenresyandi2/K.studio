@@ -1,0 +1,61 @@
+/* animations.css — semua animasi Kotak Studio ada di file ini */
+
+/* transisi antar halaman */
+.pg.on{animation:pgIn .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pgIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* hero beranda */
+#home h1{animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+#home h1 span{background:linear-gradient(90deg,var(--a),var(--a2),var(--a));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 3s linear infinite}
+@keyframes shine{to{background-position:-200% 0}}
+#home .btn.pri{animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,201,107,.55)}70%,100%{box-shadow:0 0 0 18px rgba(232,201,107,0)}}
+
+/* tombol */
+.btn{transition:transform .15s,border-color .2s,box-shadow .2s}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.btn:active:not(:disabled){transform:scale(.95)}
+
+/* kartu layout muncul berurutan */
+#lg .card{animation:pgIn .5s both;transition:transform .2s,border-color .2s}
+#lg .card:nth-child(2){animation-delay:.08s}
+#lg .card:nth-child(3){animation-delay:.16s}
+#lg .card:nth-child(4){animation-delay:.24s}
+.card:hover{transform:translateY(-6px) rotate(-1deg)}
+.card:active{transform:scale(.96)}
+
+/* indikator langkah */
+.step{transition:all .3s}
+.step.on{animation:pop .4s}
+@keyframes pop{50%{transform:scale(1.12)}}
+
+/* kamera: cincin saat sesi, angka hitung mundur, foto masuk */
+.box{transition:box-shadow .3s}
+.box.live{box-shadow:0 0 0 3px var(--a),0 0 30px rgba(232,201,107,.5)}
+#cd b{display:block;animation:cdPop 1s ease-out both}
+@keyframes cdPop{0%{transform:scale(2.2);opacity:0}25%{transform:scale(1);opacity:1}80%{opacity:1}100%{transform:scale(.7);opacity:0}}
+.slot{transition:transform .2s}
+.slot:hover{transform:scale(1.06)}
+.slot.pop{animation:slotPop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes slotPop{from{transform:scale(.3) rotate(-8deg);opacity:0}}
+
+/* kontrol hias */
+.chip{transition:all .2s}.chip:hover{transform:translateY(-2px)}
+.sw i{transition:transform .15s}.sw i:hover{transform:scale(1.25)}
+.emo{display:inline-block;transition:transform .15s}
+.emo:hover{transform:scale(1.35) rotate(8deg)}.emo:active{transform:scale(.8)}
+.cv canvas{animation:pgIn .6s both}
+
+/* toast */
+#toast{transform:translate(-50%,20px)}
+#toast.on{transform:translate(-50%,0)}
+
+/* hormati pengaturan "kurangi gerakan" */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+#lg .card:nth-child(5){animation-delay:.32s}
+
+#lprev svg{animation:pgIn .35s both}
+.card .pv svg{transition:transform .2s}
+.card.sel .pv svg{transform:scale(1.05)}
+.rvbox{animation:pgIn .35s both}
