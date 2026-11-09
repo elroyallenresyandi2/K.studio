@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kotak Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@700;900&family=Permanent+Marker&family=Knewave&family=Kaushan+Script&family=Creepster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
+</head>
+<body>
+<div class="wip" id="wip"><span>🚧 <b>Situs ini masih dalam pengembangan (beta).</b> Beberapa fitur bisa berubah atau masih ada error. Ada masukan? <a href="feedback.html">Kirim feedback</a></span><button id="wipx" aria-label="Tutup">✕</button></div>
+<nav>
+  <div class="logo" onclick="go('home')">Kotak <b>Studio</b> <small class="beta">BETA</small></div>
+  <div class="row" style="margin:0">
+    <button class="btn" onclick="go('layout')">Layout</button>
+    <a class="btn" href="feedback.html" style="text-decoration:none">💬 Feedback</a>
+    <button class="btn" onclick="tema()" id="tb">🌙</button>
+  </div>
+</nav>
+<div class="steps" id="steps"></div>
+
+<div class="pg on" id="home">
+  <h1><span>Kotak</span><br>Studio</h1>
+  <p class="sub">Pilih layout, berpose, hias, lalu unduh strip fotomu.<br>Semua diproses di browser — foto tidak pernah diunggah.</p>
+  <button class="btn pri" style="padding:16px 40px;font-size:17px;border-radius:50px" onclick="go('layout')">📸 Mulai</button>
+</div>
+
+<div class="pg" id="layout">
+  <h2 id="lh">Pilih Koleksi</h2><p class="sub" id="ls"></p>
+  <div class="lback"><button class="btn" id="lback" onclick="openColl(null)" hidden>← Semua koleksi</button></div>
+  <div class="lay">
+    <div class="grid" id="lg"></div>
+    <aside class="lp" id="lpanel" hidden>
+      <div class="lab">Pratinjau</div>
+      <div id="lprev"></div>
+      <div id="lvar"></div>
+      <div id="linfo"></div>
+      <button class="btn pri" onclick="startLayout()">Lanjut: Foto →</button>
+    </aside>
+  </div>
+</div>
+
+<div class="pg" id="foto">
+  <h2>Berpose!</h2><p class="sub">Hitung mundur otomatis tiap foto. Setelah selesai, kamu bisa melihat pratinjau dan mengulang foto yang kurang bagus.</p>
+  <div class="lback"><button class="btn" onclick="go('layout')">← Ganti Frame</button></div>
+  <div class="cam">
+    <div>
+      <div class="box" id="box"><video id="v" autoplay playsinline muted></video><div id="cd"></div><div id="fl"></div></div>
+      <div class="row">
+        <button class="btn" onclick="cam()">Nyalakan Kamera</button>
+        <button class="btn" onclick="flip()">🔄 Balik</button>
+        <button class="btn" id="csbtn" type="button">⚙️ Atur Kamera</button>
+        <select class="btn" id="fm" title="Flash saat foto"><option value="kilat">⚡ Flash: Kilat</option><option value="layar">💡 Flash: Cahaya layar</option><option value="mati">🚫 Flash: Mati</option></select>
+        <select class="btn" id="tm"><option value="3">3 detik</option><option value="5">5 detik</option><option value="10">10 detik</option></select>
+        <select class="btn" id="fsel" title="Filter (berlaku untuk semua foto)"></select>
+        <button class="btn pri" id="go" onclick="session()" disabled>📸 Mulai Sesi</button>
+      </div>
+      <div id="camset" hidden>
+        <div class="cs-row"><label for="camsel">Kamera</label><select id="camsel"><option>(nyalakan kamera dulu)</option></select></div>
+        <div class="cs-row"><label for="zoom">Zoom <b id="zv">1.0×</b></label><input type="range" id="zoom" min="1" max="3" step="0.1" value="1"></div>
+        <div class="cs-row"><label for="bri">Kecerahan <b id="bv">100%</b></label><input type="range" id="bri" min="0.6" max="1.6" step="0.05" value="1"></div>
+        <div class="cs-row"><label for="con">Kontras <b id="cv">100%</b></label><input type="range" id="con" min="0.6" max="1.6" step="0.05" value="1"></div>
+        <label class="chk"><input type="checkbox" id="mir"> Cerminkan gambar</label>
+        <button class="btn" id="csreset" type="button">Atur ulang</button>
+      </div>
+      <div id="st">Tekan "Nyalakan Kamera".</div>
+      <div class="row" style="justify-content:center">
+        <button class="btn" id="rvbtn" type="button" hidden>👁 Pratinjau &amp; ulangi</button>
+        <button class="btn pri" id="nx" onclick="go('edit')" disabled>Lanjut: Hias →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pg" id="edit">
+  <div class="ed">
+    <div class="cv"><canvas id="c"></canvas><canvas id="ov"></canvas></div>
+    <div class="ctl">
+      <div class="hint" id="lhint" hidden>◉ Live Photo bergerak sendiri. Tekan &amp; tahan sebuah foto untuk memutarnya dari awal.<br><button class="btn" id="lauto" onclick="toggleAuto()">⏸ Jeda Live</button></div>
+      <div class="fx"><div class="lab">Tema Cepat</div><div class="chips" id="th"></div></div>
+      <div class="tx"><div class="lab">Variasi Frame</div><div class="sw" id="evar"></div></div>
+      <div class="fx"><div class="lab">Warna Frame</div><div class="sw" id="sw"></div><input type="color" id="cc" value="#ffffff" style="margin-top:8px"></div>
+      <div class="fx"><div class="lab">Motif Frame</div><div class="chips" id="pt"></div></div>
+      <div class="fx"><div class="lab">Bentuk Foto</div><div class="chips" id="sh"></div></div>
+      <div><div class="lab">Filter</div><div class="chips" id="fi"></div></div>
+      <div><div class="lab">Stiker (klik tambah, seret pindah)</div><div class="sw" id="em"></div>
+        <div class="row"><button class="btn" onclick="stk('s',1.15)">＋</button><button class="btn" onclick="stk('s',.87)">－</button><button class="btn" onclick="stk('r',.3)">⟳</button><button class="btn" onclick="stk('f')">⇋</button><button class="btn" onclick="stk('d')">🗑</button></div></div>
+      <div><div class="lab">Doodle</div>
+        <div class="row"><button class="btn" id="dm" onclick="doodleMode()">✏️ Gambar: mati</button><input type="color" id="dc" value="#ff4d6d"><button class="btn" onclick="D.pop();draw()">↶</button><button class="btn" onclick="D=[];draw()">Hapus</button></div></div>
+      <div><div class="lab">Teks</div><input type="text" id="cap" placeholder="Tulis keterangan..." oninput="draw()">
+        <label style="font-size:13px;display:block;margin-top:8px"><input type="checkbox" id="dt" checked onchange="draw()"> Tampilkan tanggal</label></div>
+      <div class="row"><button class="btn" onclick="go('foto')">← Foto</button><button class="btn" id="vdl" onclick="dlVid()" hidden>🎬 Video Live</button><button class="btn" onclick="dlFrame()" title="Unduh frame saja, tanpa foto (PNG transparan)">🖼 Frame</button><button class="btn pri" style="flex:1" onclick="dl()">⬇️ Download HD</button></div>
+    </div>
+  </div>
+</div>
+<div id="rv" class="rv" hidden>
+  <div class="rvbox">
+    <h2>Pratinjau</h2>
+    <p class="sub">Suka hasilnya? Tekan <b>↻</b> di pojok foto yang ingin diganti.</p>
+    <div class="rvwrap"><canvas id="pvc"></canvas><div id="rvhot"></div></div>
+    <div class="sw" id="pvar"></div>
+    <div class="lab">Filter · berlaku untuk semua foto</div><div class="chips" id="rvf"></div>
+    <div class="row rvbtns">
+      <button class="btn" id="rvall" type="button">↻ Ulangi semua</button>
+      <button class="btn" id="rvclose" type="button">Tutup</button>
+      <button class="btn pri" id="rvgo" type="button">Lanjut: Hias →</button>
+    </div>
+  </div>
+</div>
+<div id="sflash"></div>
+<div id="toast"></div>
+
+<script src="designs.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
